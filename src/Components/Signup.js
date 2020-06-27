@@ -1,10 +1,11 @@
 import React, { useCallback } from 'react'
 import app from '../Fire';
 
+
 const Signup = ({ history }) => {
     
-
-    const submit = useCallback(async(e) => {
+console.log('history', history)
+    const handleSubmit = useCallback(async(e) => {
         e.preventDefault();
         const { email, password } = e.target.elements;
         try {
@@ -15,10 +16,11 @@ const Signup = ({ history }) => {
             }
     },[ history ]);
 
+
     return (
         <div>
             <h1> Signup </h1>
-            <form onSubmit={() => submit()}>
+            <form onSubmit={() => handleSubmit()}>
                 <label>Email: </label>
                 <input name='email' type='email'/>
                 <label>Password: </label>
