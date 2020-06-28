@@ -10,9 +10,11 @@ export const AuthContext = React.createContext()
 export const AuthProvider = ({ children }) => {
     const [ currentUser, setCurrentUser ] = useState(null)
 
-
+console.log('auth', currentUser)
 useEffect(() => {
-    app.auth().onAuthStateChanged(setCurrentUser)
+    app.auth().onAuthStateChanged( user => {
+        setCurrentUser(user)
+    })
 }, [])
 
     /*Each context comes with a Provider - This makes context available to all Components
@@ -21,9 +23,9 @@ useEffect(() => {
     return (
         <AuthContext.Provider
         //props value contains the data we want to make available to our component tree.
-            value={
+            value={{
                 currentUser
-            }
+            }}
         >
             {children}
         </AuthContext.Provider>

@@ -8,6 +8,7 @@ console.log('history', history)
     const handleSubmit = useCallback(async(e) => {
         e.preventDefault();
         const { email, password } = e.target.elements;
+        console.log('signup', email.value, password.value)
         try {
             await app.auth().createUserWithEmailAndPassword(email.value, password.value);
             history.push('/')
@@ -20,7 +21,7 @@ console.log('history', history)
     return (
         <div>
             <h1> Signup </h1>
-            <form onSubmit={() => handleSubmit()}>
+            <form onSubmit={handleSubmit}>
                 <label>Email: </label>
                 <input name='email' type='email'/>
                 <label>Password: </label>
